@@ -94,12 +94,12 @@ class Sprint {
 public class Main {
     public static void main(String[] args) {
         Sprint sprint = new Sprint(20, 5);
-        UserStory userStory1 = new UserStory(1, "Реєстрація користувача", 8, new UserStory[0]);
-        UserStory userStory2 = new UserStory(2, "Авторизація користувача", 8, new UserStory[0]);
+        UserStory userStory1 = new UserStory(1, "Об'єкт реєстрації користувача", 8, new UserStory[0]);
+        UserStory userStory2 = new UserStory(2, "Форма реєстрації", 8, new UserStory[0]);
         sprint.addUserStory(userStory1);
         sprint.addUserStory(userStory2);
-        Bug bug1 = Bug.createBug(1, "Помилка при введенні паролю", 3, userStory1);
-        Bug bug2 = Bug.createBug(2, "Непрацююча кнопка відправки", 2, userStory2);
+        Bug bug1 = Bug.createBug(1, "Непрацююча кнопка", 3, userStory1);
+        Bug bug2 = Bug.createBug(2, "Додати пароль що повторюється", 2, userStory2);
         bug1.complete();
         sprint.addBug(bug1);
         sprint.addBug(bug2);
