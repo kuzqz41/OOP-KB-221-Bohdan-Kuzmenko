@@ -1,8 +1,8 @@
 class Ticket {
-    private int id;
-    private String name;
-    private int estimate;
-    private boolean completed;
+    public int id;
+    public String name;
+    public int estimate;
+    public boolean completed;
     public Ticket(int id, String name, int estimate) {
         this.id = id;
         this.name = name;
@@ -24,17 +24,12 @@ class Ticket {
     public void complete() {
         completed = true;
     }
-}
+} // Тут всё правильно, ничего менять не нужно !!!
 class UserStory extends Ticket {
-    private UserStory[] dependencies;
+    public UserStory[] dependencies;
     public UserStory(int id, String name, int estimate, UserStory[] dependencies) {
         super(id, name, estimate);
         this.dependencies = dependencies;
-    }
-    public UserStory[] getDependencies() {
-        UserStory[] copy = new UserStory[dependencies.length];
-        System.arraycopy(dependencies, 0, copy, 0, dependencies.length);
-        return copy;
     }
     @Override
     public String toString() {
@@ -42,7 +37,7 @@ class UserStory extends Ticket {
     }
 }
 class Bug extends Ticket {
-    private UserStory userStory;
+    public UserStory userStory;
     public Bug(int id, String name, int estimate, UserStory userStory) {
         super(id, name, estimate);
         this.userStory = userStory;
@@ -59,10 +54,10 @@ class Bug extends Ticket {
     }
 }
 class Sprint {
-    private int capacity;
-    private int ticketLimit;
-    private Ticket[] tickets;
-    private int size;
+    public int capacity;
+    public int ticketLimit;
+    public Ticket[] tickets;
+    public int size;
     public Sprint(int capacity, int ticketLimit) {
         this.capacity = capacity;
         this.ticketLimit = ticketLimit;
@@ -105,6 +100,7 @@ public class Main {
         sprint.addUserStory(userStory2);
         Bug bug1 = Bug.createBug(1, "Помилка при введенні паролю", 3, userStory1);
         Bug bug2 = Bug.createBug(2, "Непрацююча кнопка відправки", 2, userStory2);
+        bug1.complete();
         sprint.addBug(bug1);
         sprint.addBug(bug2);
         Ticket[] sprintTickets = sprint.getTickets();
